@@ -1,0 +1,31 @@
+[project]
+name = "langgraph-researcher"
+version = "0.1.0"
+description = "Multi-agent research assistant built with LangGraph: planner, researcher, writer, critic, human review"
+requires-python = ">=3.11"
+dependencies = [
+    "langgraph>=0.2",
+    "langchain>=0.3",
+    "langchain-core>=0.3",
+    "langchain-anthropic>=0.3",
+    "langchain-community>=0.3",
+    "pydantic>=2.7",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+search = ["langchain-tavily>=0.1"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+research = "researcher.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["B008"]
